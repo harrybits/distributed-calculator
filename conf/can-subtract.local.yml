@@ -1,0 +1,15 @@
+logging.level.com.github.harrybits.dcalc.WebCalculatorVisitor: TRACE
+server:
+  port: 8081
+ops:
+  can:
+    subtract: true
+  service:
+    add:
+      name: localhost:8080
+    subtract:
+      name: localhost:8081
+    multiply:
+      name: localhost:8082
+    divide:
+      name: localhost:8083

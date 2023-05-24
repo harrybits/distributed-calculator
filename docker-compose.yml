@@ -1,0 +1,60 @@
+version: "4.0"
+
+services:
+
+  addition:
+    build:
+      context: .
+      tags:
+        - "harrybits/dcalc:latest"
+    image: harrybits/dcalc:latest
+    ports:
+      - "8080:80"
+    environment:
+      SPRING_APPLICATION_JSON: >
+        {
+          "spring.application.name": "addition",
+          "ops.can.add": true
+        }
+
+  subtraction:
+    image: harrybits/dcalc:latest
+    ports:
+      - "8081:80"
+    environment:
+      SPRING_APPLICATION_JSON: >
+        {
+          "spring.application.name": "subtraction",
+          "ops.can.subtract": true
+        }
+
+  multiplication:
+    image: harrybits/dcalc:latest
+    ports:
+      - "8082:80"
+    environment:
+      SPRING_APPLICATION_JSON: >
+        {
+          "spring.application.name": "multiplication",
+          "ops.can.multiply": true
+        }
+
+  division:
+    image: harrybits/dcalc:latest
+    ports:
+      - "8083:80"
+    environment:
+      SPRING_APPLICATION_JSON: >
+        {
+          "spring.application.name": "division",
+          "ops.can.divide": true
+        }
+
+  # The zipkin process services the UI, and also exposes a POST endpoint that
+  # instrumentation can send trace data to. Scribe is disabled by default.
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411
