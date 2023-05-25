@@ -15,7 +15,7 @@ public class AppConfig {
 
 	static final int TIMEOUT = 2000;
 
-    @Bean
+	@Bean
 	public RestTemplate restTemplate() {
 		DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory();
 		factory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.VALUES_ONLY);

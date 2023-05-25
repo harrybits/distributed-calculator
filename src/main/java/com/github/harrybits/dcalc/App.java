@@ -49,10 +49,10 @@ public class App {
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		CalculatorParser parser = new CalculatorParser(tokens);
 		ParseTree tree = parser.start();
-
-
+		
 		Double answer = webCalc.visit(tree);
 		LOGGER.debug("Returning {}", answer);
+
 		return Double.toString(answer);
 	}
 
